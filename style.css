@@ -26,6 +26,8 @@ body { background: var(--paper); color: var(--ink); font-family: var(--serif); f
 a { color: inherit; }
 a:focus-visible { outline: 3px solid var(--mari); outline-offset: 3px; border-radius: 4px; }
 svg { display: block; }
+/* Safari: inline SVG drawings need a width or they fall back to a default size. Each .art carries its viewBox size as width/height attributes, and scales to its column here. */
+.art { width: 100%; height: auto; max-width: 100%; }
 .wrap { max-width: 1240px; margin: 0 auto; padding: 0 64px; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .grid > *, .duo > * { min-width: 0; }
