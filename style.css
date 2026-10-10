@@ -44,8 +44,15 @@ section { padding: 110px 0; }
 
 /* top bar */
 .top { display: flex; align-items: center; gap: 30px; height: 92px; }
-.name { display: flex; align-items: center; gap: 14px; text-decoration: none; font-family: var(--sans); font-weight: 600; font-size: 16px; letter-spacing: .24em; text-transform: uppercase; }
-.name svg { width: 24px; height: 36px; }
+/* Header lockup (his ruling, 2026-10-09): his name, and under it THE USEFUL PAUSE, starting and ending at the same x.
+   Both lines are SVG text with the same textLength, so every browser spaces them to the same width whatever its
+   font metrics. Line 2 is 0.45 units longer so the ink of its "E" lines up with the "L" above
+   (Montserrat side bearings). Text block spans the mark's two bars (cap top to bar top, second baseline to bar bottom), like the logo lockup. */
+.name { display: flex; align-items: flex-start; gap: 14px; text-decoration: none; }
+.name .mk { width: 24px; height: 36px; flex: none; }
+.name .lk { width: 190px; height: 26.4px; margin-top: 8.88px; overflow: visible; flex: none; }
+.name .lk text { font-family: var(--sans); font-weight: 600; fill: var(--paper); }
+.name .lk .l2 { fill: var(--mari); }
 .top nav { display: flex; gap: 30px; margin-left: auto; font-family: var(--sans); font-weight: 600; font-size: 14px; letter-spacing: .08em; }
 .top nav a { text-decoration: none; }
 .top nav a:hover { color: var(--mari); }
@@ -186,8 +193,10 @@ footer .legal { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(-
   .top { height: auto; padding: 18px 0 6px; flex-wrap: wrap; gap: 14px 20px; }
   .navbtn { display: none; }
   .top nav { margin-left: 0; width: 100%; gap: 0; justify-content: space-between; font-size: 13px; letter-spacing: .04em; }
-  .name { font-size: 13px; letter-spacing: .2em; gap: 10px; }
-  .name svg { width: 18px; height: 27px; }
+  /* phone: name 14 px, second line 10 px; the mark grows so its bars still span the two lines */
+  .name { gap: 10px; }
+  .name .mk { width: 21px; height: 31.5px; }
+  .name .lk { width: 166px; height: 23.07px; margin-top: 7.77px; }
   .grid, .hero .grid, .talks .grid, .news .grid, .duo, .pair { grid-template-columns: 1fr; gap: 36px; }
   .hero { padding-top: 28px; }
   .hero .copy { padding-bottom: 0; }
