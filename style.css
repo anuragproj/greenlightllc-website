@@ -64,6 +64,11 @@ section { padding: 110px 0; }
 .btn.i { background: var(--ink); color: var(--paper); }
 .btn.o { border-color: currentColor; }
 .cta { display: flex; gap: 18px; flex-wrap: wrap; }
+/* Hero button "Read The Useful Pause" (his pick, 2026-10-10): same font as "Read" (Montserrat 600), set apart by a thin
+   hand-drawn ink underline that draws itself once on load, after "judgment." (anim.js). Reduced motion or no script: drawn.
+   The underline sits inside the button's side padding, clear of the rounded ends. Never wraps. */
+.mk.ul-btn > svg { left: -1%; bottom: -.16em; width: 102%; height: .4em; }
+.hero .cta .btn { white-space: nowrap; }
 
 /* type */
 .label { font-family: var(--sans); font-weight: 600; font-size: 14px; letter-spacing: .22em; text-transform: uppercase; margin: 0 0 22px; }
