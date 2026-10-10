@@ -199,7 +199,7 @@ footer .legal { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(-
   .pair { gap: 10px; margin: 36px auto 30px; }
   .pair .art { max-width: 300px; margin: 0 auto; }
   .idea .body { font-size: 18px; }
-  .pull { font-size: 28px; }
+  .pull { font-size: min(28px, calc((100vw - 48px) / 11.2)); }  /* "not the other way round." never wraps and is about 10.9em wide: shrink it on narrow phones (320 px) */
   .witness .lead { font-size: 21px; }
   .talks .intro { font-size: 30px; margin-bottom: 44px; }
   .core { font-size: 40px; }
@@ -233,13 +233,18 @@ footer .legal { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(-
    Layout first (always on), then motion (only with anim.js and no reduced-motion request).
    Every rule under html.anim describes the START of a move. The page without it is the finished drawing. */
 /* S3 the question, set as a break-out with a note-taking box on each word */
-.ask { font-size: 30px; line-height: 1.6; margin: 4px 0 34px; text-wrap: pretty; }
-.qp { position: relative; display: inline-block; white-space: nowrap; }
+.ask { font-size: 30px; line-height: 1.6; margin: 4px 0 34px; }   /* plain wrapping: the lead-in breaks after "AI tool," and the two halves sit below */
+/* The question in two halves (2026-10-09): "am I [reacting] on impulse, / or [responding] with intention?"
+   Each half keeps together on its own line, at every width, so the two read as a pair.
+   A short hooked arrow drops from the "reacting" box to the "responding" box. */
+.q { display: block; }
+.qh { position: relative; display: inline-block; white-space: nowrap; }
+.qh2 { display: block; margin-top: .62em; }
 .mk.box { margin: 0 .3em; line-height: 1.2; }
-.mk.box.b-int { margin-right: .14em; }
+.mk.box.b-int { margin-right: .26em; }
 .mk.box > svg.dr { left: -10%; top: -6%; width: 120%; height: 118%; }
 .b-int.mk.box > svg.dr { left: -7%; width: 114%; }
-.q-arr { position: absolute; left: 31%; bottom: -.66em; width: 30%; height: .62em; overflow: visible; }
+.q-hook { position: absolute; left: 1.55em; top: 1.16em; width: .8em; height: 1.3em; overflow: visible; }
 /* S4 the three things to keep, numbered like notes, with Dot pointing */
 .pts { display: grid; grid-template-columns: 150px 1fr; gap: 22px; align-items: center; margin: 26px 0 30px; }
 .pts-dot { width: 100%; height: auto; }
@@ -255,8 +260,17 @@ footer .legal { margin-top: 50px; padding-top: 22px; border-top: 1px solid var(-
 /* S8 Dot notices the reach */
 .reach .art { max-width: 360px; margin: 6px 0 4px -8px; }
 
+/* Tablet (761 to 1000 px): stack Building and About. Side by side, About was a 240 px column and its
+   underlined "a parent of two teenagers" (it never wraps) pushed the page sideways. Fixed 2026-10-09. */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .duo { grid-template-columns: 1fr; gap: 56px; }
+  .about { border-left: 0; border-top: 2px solid var(--ink); padding: 40px 0 0; }
+}
+
 @media (max-width: 760px) {
   .ask { font-size: 23px; }
+  /* the longer half ("or responding with intention?") is about 15.2em wide: shrink it on narrow phones so it never wraps */
+  .q { font-size: min(1em, calc((100vw - 50px) / 15.4)); }
   .pts { grid-template-columns: 78px 1fr; gap: 12px; margin: 20px 0 24px; }
   .pts p { font-size: 21px; line-height: 1.85; }
   .pt { margin-left: 21px; }
